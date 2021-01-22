@@ -1,0 +1,7 @@
+/home/kol/Projects/tink/source/usr/target/build/CMakeFiles/install/strip.dir
+/home/kol/Projects/tink/source/usr/target/build/CMakeFiles/install/local.dir
+/home/kol/Projects/tink/source/usr/target/build/CMakeFiles/edit_cache.dir
+/home/kol/Projects/tink/source/usr/target/build/CMakeFiles/install.dir
+/home/kol/Projects/tink/source/usr/target/build/CMakeFiles/list_install_components.dir
+/home/kol/Projects/tink/source/usr/target/build/CMakeFiles/rebuild_cache.dir
+/home/kol/Projects/tink/source/usr/target/build/CMakeFiles/request.dir

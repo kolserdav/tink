@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/request.dir/main_target.cpp.o CMakeFiles/request.dir/home/kol/Projects/tink/source/usr/lib/Worker.cpp.o CMakeFiles/request.dir/src/Request.cpp.o -o request  /usr/lib/libcurl.so 
