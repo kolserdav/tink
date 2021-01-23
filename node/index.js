@@ -6,11 +6,18 @@ const path = require('path');
 const PORT = 3030;
 
 const app = express();
-app.use(bodyParser.json());
+
+const options = {
+	inflate: true,
+	limit: '100mb',
+	type: 'application/octet-stream'
+  };
+app.use(bodyParser.raw(options));
 
 
 app.post("/", (req, res) => {
-	console.log(req.data);
+	console.log(req.body.toString());
+	console.log(req.headers);
 	res.set('Content-Type', 'application/json');
 	const data = fs.readFileSync(path.resolve(__dirname, '../source/usr/base/build/response'));
 	res.send(data);

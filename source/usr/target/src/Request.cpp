@@ -3,6 +3,7 @@
 #include <fstream>
 #include <cstdio>
 #include <string>
+#include <unistd.h>
 #include <curl/curl.h>
 #include <sys/stat.h>
 
@@ -11,6 +12,16 @@ Request::Request()
 {
     this->SetDistPath();
     this->srcPath =  "/tmp/rest";
+}
+
+
+int Request::Circle() {
+    while (true) {
+        sleep(this->duration);
+        Request m = Request();
+        m.Send();
+    }
+    return 1;
 }
 
 void Request::SetDistPath() {

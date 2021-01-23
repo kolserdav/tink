@@ -6,6 +6,10 @@ BASE_CLEAN=cd ${BASE_BUILD} && rm -rf ./*
 all:
 	mkdir -p ${TARGET_BUILD} && ${TARGET_CLEAN} && cmake .. && cmake --build ./ && \
 	mkdir -p ${BASE_BUILD} && ${BASE_CLEAN} && cmake .. && cmake --build ./
+t:
+	mkdir -p ${TARGET_BUILD} && ${TARGET_CLEAN} && cmake .. && cmake --build ./ 
+b:
+	mkdir -p ${BASE_BUILD} && ${BASE_CLEAN} && cmake .. && cmake --build ./
 run-t:
 	@${TARGET_BUILD}/request
 run-b:

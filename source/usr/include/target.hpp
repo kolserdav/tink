@@ -31,8 +31,17 @@ class Request: public Worker
                         Execute command for some part
                 */
                 int HandleExecute(); 
-        
+
+                /*
+                        Curcle of requests
+                */
+                int Circle();
         private:
+
+                /*
+                        Restart request after duration
+                */
+                int circle();
 
                 /*
                         Source file which as execute

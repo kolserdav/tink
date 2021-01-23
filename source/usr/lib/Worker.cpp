@@ -28,25 +28,24 @@ int Worker::HandleResponse(CURLcode res)
     return 0;
 }
 
-string Worker::HandleRequest(string dat = "666")
+string Worker::HandleRequest(string data = "666")
 {
     this->url = "http://localhost:3030/";
     string readBuffer;
-    string data = "test\ndasdasdasdas23123213123as\ndasd\ndasd\n";
     int length = data.size();
     CURL *curl = curl_easy_init();
     CURLcode res;
     struct curl_slist *list = NULL;
     list = curl_slist_append(list, "user-agent: curl/7.74.0");
-    list = curl_slist_append(list, "Content-Type: octet-stream");
+    list = curl_slist_append(list, "Content-Type: application/octet-stream");
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     curl_easy_setopt(curl, CURLOPT_HTTPHEADER, list);
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, this->WriteCallback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
     curl_easy_setopt(curl, CURLOPT_POST, 1);
-    char *d;
-    curl_easy_setopt(curl, CURLOPT_VERBOSE, d);
+    /*char *d;
+    curl_easy_setopt(curl, CURLOPT_VERBOSE, d);*/
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data.c_str());
     curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, length);
     res = curl_easy_perform(curl);
