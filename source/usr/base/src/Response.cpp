@@ -15,7 +15,6 @@ void Response::SetDistPath() {
 int Response::HandleExecute() {
     string parCom = " > ";
     string exComStr = "cat /etc/resolv.conf" + parCom + this->distPath;
-    cout << exComStr << endl;
     system(exComStr.c_str());
     return 0;
 }

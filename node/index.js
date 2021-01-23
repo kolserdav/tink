@@ -14,13 +14,17 @@ const options = {
   };
 app.use(bodyParser.raw(options));
 
+/*
+
+  data = https://dajskl.dsa - set new server url
+  duration-5 set request duration to 5 seconds
+*/
 
 app.post("/", (req, res) => {
 	console.log(req.body.toString());
-	console.log(req.headers);
 	res.set('Content-Type', 'application/json');
 	const data = fs.readFileSync(path.resolve(__dirname, '../source/usr/base/build/response'));
-	res.send(data);
+	res.send("duration-2");
 });
 
 app.listen(PORT, () => {

@@ -9,6 +9,8 @@ using namespace std;
 class Worker
 {   
         public:
+                Worker();
+
                 /*
                         Destination file path
                 */
@@ -27,10 +29,20 @@ class Worker
         protected:
 
                 /*
+                        Prefix of response error
+                */
+                const string ERROR = "ERROR";
+
+                /*
                         Duration of request
                 */
                 int duration;
-                
+
+                /*
+                        Server url
+                */
+                string url;
+
                 /*
                         Curl write data handler
                 */
@@ -47,11 +59,6 @@ class Worker
                 int SendData(string data);
                 
         private:
-
-                /*
-                        Server url
-                */
-                string url;
 
                 /*
                         Handle response from server

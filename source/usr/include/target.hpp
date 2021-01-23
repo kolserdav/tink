@@ -10,9 +10,9 @@ class Request: public Worker
                 Request();
 
                 /*
-                        Send get task method
+                        Curcle of requests
                 */
-                int Send();
+                int Circle();
         protected:
 
                 // Abstract methods of base class
@@ -32,11 +32,12 @@ class Request: public Worker
                 */
                 int HandleExecute(); 
 
-                /*
-                        Curcle of requests
-                */
-                int Circle();
         private:
+
+                /*
+                        Send get task method
+                */
+                int Send();
 
                 /*
                         Restart request after duration

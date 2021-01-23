@@ -1,0 +1,17 @@
+#/etc/systemd/system/name.service - link
+#/usr/lib/systemd/system/name.service - file
+
+[Unit]
+Description=Desc text
+After=network.target
+StartLimitIntervalSec=0[Service]
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/usr/bin/NameOfExecuteFile
+
+[Install]
+WantedBy=multi-user.target

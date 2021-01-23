@@ -2,6 +2,9 @@
 #include <curl/curl.h>
 #include <curl/easy.h>
 #include <iostream>
+
+#define NO_DATA "666"
+
 using namespace std;
 void Worker::SetDistPath() {};
 int Worker::HandleExecute() { return 0; };
@@ -11,6 +14,7 @@ size_t Worker::WriteCallback(void *contents, size_t size, size_t nmemb, void *us
     ((string*)userp)->append((char*)contents, size * nmemb);
     return size * nmemb;
 }
+
 
 int Worker::HandleResponse(CURLcode res)
 {
@@ -28,9 +32,14 @@ int Worker::HandleResponse(CURLcode res)
     return 0;
 }
 
-string Worker::HandleRequest(string data = "666")
+Worker::Worker()
 {
-    this->url = "http://localhost:3030/";
+    this->duration = 2;
+    this->url = "https://localhost:3030/";
+}
+
+string Worker::HandleRequest(string data = NO_DATA)
+{
     string readBuffer;
     int length = data.size();
     CURL *curl = curl_easy_init();
@@ -50,7 +59,7 @@ string Worker::HandleRequest(string data = "666")
     curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, length);
     res = curl_easy_perform(curl);
     curl_slist_free_all(list);
-    this->HandleResponse(res);
+    //this->HandleResponse(res);
     curl_easy_cleanup(curl);
     return readBuffer;
 }

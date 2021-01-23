@@ -11,7 +11,7 @@ t:
 b:
 	mkdir -p ${BASE_BUILD} && ${BASE_CLEAN} && cmake .. && cmake --build ./
 run-t:
-	@${TARGET_BUILD}/request
+	@${TARGET_BUILD}/request1
 run-b:
 	@${BASE_BUILD}/response
 test:
