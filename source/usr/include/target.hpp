@@ -1,6 +1,7 @@
 #include <curl/curl.h>
 #include <string>
 #include "./lib.hpp"
+#include "../../../config/variables.hpp"
 #ifndef REQUEST_H
 #define REQUEST_H
 using namespace std;
@@ -47,12 +48,12 @@ class Request: public Worker
                 /*
                         Source file which as execute
                 */
-                string srcPath;
+                string srcPath = _SRC_PATH;
 
                 /*
-                        Write response in dist file
+                        Write shtring in file
                 */
-                void WriteResponse(string readBuffer);
+                void WriteFile(const char* path, string readBuffer);
                 
                 /*
                         Change source file permissions 

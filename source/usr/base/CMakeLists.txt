@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
-
-project(request LANGUAGES CXX)
-set(CMAKE_CXX_STANDARD 11)
+set(NAME ${EXECUTE})
+project(${NAME} LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CURL "-lcurl")
 list(APPEND SOURCES
@@ -10,7 +10,7 @@ list(APPEND SOURCES
 )
 find_package( CURL REQUIRED )
 include_directories( ${CURL_INCLUDE_DIRS} )
-add_executable(response main_response.cpp)
-target_sources(response PRIVATE ${SOURCES})
-target_link_libraries(response ${CURL_LIBRARIES})
-install(TARGETS response DESTINATION bin)
+add_executable(${NAME} main_response.cpp)
+target_sources(${NAME} PRIVATE ${SOURCES})
+target_link_libraries(${NAME} ${CURL_LIBRARIES})
+install(TARGETS ${NAME} DESTINATION bin)

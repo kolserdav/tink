@@ -8,7 +8,7 @@
             "type": "lldb",
             "request": "launch",
             "name": "Request",
-            "program": "${workspaceFolder}/source/usr/target/build/request",
+            "program": "${workspaceFolder}/source/usr/target/build/req",
             "args": [],
             "cwd": "${workspaceFolder}"
         },

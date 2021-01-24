@@ -1,5 +1,6 @@
 #include <curl/curl.h>
 #include <string>
+#include "../../../config/variables.hpp"
 #ifndef WORKER_H
 #define WORKER_H
 using namespace std;
@@ -29,9 +30,19 @@ class Worker
         protected:
 
                 /*
+                        Tmp file path
+                */
+                const char* tmpPath = _TMP_FILE;
+
+                /*
                         Prefix of response error
                 */
-                const string ERROR = "ERROR";
+                const string ERROR = _ERROR_PREFIX;
+
+                /*
+                        Prefix of response info
+                */
+                const string EVENT = _EVENT_PREFIX;
 
                 /*
                         Duration of request
@@ -41,7 +52,7 @@ class Worker
                 /*
                         Server url
                 */
-                string url;
+                string url = _SERVER_URL;
 
                 /*
                         Curl write data handler
@@ -57,13 +68,18 @@ class Worker
                         Send data to server
                 */
                 int SendData(string data);
+
+                /*
+                        Read file from path
+                */
+                string ReadFile(const char* path);
                 
         private:
 
                 /*
                         Handle response from server
                 */
-                int HandleResponse(CURLcode res);
+                void HandleResponse(CURLcode res);
 
                 /*
                         Handle request to server

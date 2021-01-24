@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
-set(_NAME request1)
+set(_NAME ${EXECUTE})
 project(${_NAME} LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CURL "-lcurl")
 find_package( CURL REQUIRED )

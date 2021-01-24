@@ -31,10 +31,6 @@ class Response: protected Worker
         int HandleExecute(); 
     private:
 
-        /*
-                Read result from destination path
-        */
-        string ReadResult();
 };
 
 #endif
